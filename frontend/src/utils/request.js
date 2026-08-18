@@ -4,8 +4,9 @@ import { useUserStore } from '@/stores/user'
 import router from '@/router'
 
 // 创建axios实例
+// 生产部署可用环境变量 VITE_API_BASE_URL 指定后端地址（构建时生效），默认同域 /api
 const request = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json'
